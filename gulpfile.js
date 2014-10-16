@@ -10,6 +10,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var minifyCss = require('gulp-minify-css');
 var open = require('gulp-open');
+var reactify = require('reactify');
 var rename = require('gulp-rename');
 var shell = require('gulp-shell');
 var source = require('vinyl-source-stream');
@@ -30,7 +31,7 @@ gulp.task('ci', [
 ]);
 
 gulp.task('watch', ['assets', '_copyTestAssets'], function() {
-  gulp.watch(['src/**/*', 'hologram/**/*'], ['assets', '_copyTestAssets']);
+  gulp.watch(['src/pivotal-ui/**/*', 'hologram/**/*'], ['assets', '_copyTestAssets']);
 });
 
 gulp.task('serve', function() {
@@ -137,7 +138,10 @@ gulp.task('_copyPrism', ['clean'], function() {
 });
 
 gulp.task('_scripts', ['clean'], function() {
-  return browserify('./src/pivotal-ui/javascripts/pivotal-ui.js').bundle()
+  var b = browserify('./src/pivotal-ui/javascripts/pivotal-ui.js');
+  b.transform(reactify);
+
+  return b.bundle()
     .pipe(source('./pivotal-ui.js'))
     .pipe(gulp.dest('dist/'))
 });
