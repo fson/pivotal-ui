@@ -1,0 +1,174 @@
+/*doc
+---
+title: Tutorial
+name: tutorial
+categories:
+  - Tutorial
+---
+
+*/
+
+/*doc
+---
+title: Building the Header
+name: 01_building_the_header
+parent: tutorial
+---
+
+COME BACK TO ME!
+
+*/
+
+/*doc
+---
+title: The Main Pane
+name: 02_the_main_pane
+parent: tutorial
+---
+
+We'll be building out a hero unit, and progressively applying styles to it, with descriptions along the way.
+
+<h3 class="styleguide">Layout Elements</h3>
+
+Let's start with some markup:
+
+```html_example
+<div class="pane bg-glow">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-22 col-md-offset-1">
+        <h1 class="type-neutral-11">The Agile Platform for the Agile Team!</h1>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+<h4 class="em-high">What's going on here?</h4>
+
+The outer-most div is a pane.
+Panes are used when you want an element to take up the full width of the screen.
+We're using it here because we want the background to take up the screen's width.
+The `bg-glow` applies the dark background with the radial-gradient as shown.
+
+The inner elements are used to position our `h1` on the page.
+Pivotal UI is built up on Bootstrap's grid system.
+We've modified the grid system to be based on 24 columns.
+
+On mobile, we want the `h1` to take up the entire width.
+However, on desktop (approx &geq;770px), we want the title to take up the middle 22 columns.
+This is exactly what the `col-md-22` and `col-md-offset-1` classes provide us.
+
+<div class="alert alert-info mbxl">
+  <h5 class="em-high mtn">
+    The grid system is designed from a mobile-first perspective.
+  </h5>
+
+  <p>
+    The default behavior of columns is to take up 100% of the width.
+    The middle two characters of the class names describe the breakpoint at which the column rules take effect.
+  </p>
+</div>
+
+We want the `h1` to visible against the dark background,
+so we've given it the class `type-neutral-11` to make it white.
+
+<h4 class="em-high">More info</h4>
+
+* More info on panes - [layout page](/layout.html#pane)
+* More info on grids - [layout page](/layout.html#grid)
+* More info on backgrounds - [utilities page](/elements.html#background)
+* More info on PUI color classes - [utilities page](/utilities.html#color)
+
+
+
+
+<h3 class="styleguide">Styling the Text</h3>
+
+```html_example
+<div class="pane bg-glow txt-c">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-22 col-md-offset-1">
+        <h1 class="type-neutral-11 em-high title">The Agile Platform for the Agile Team!</h1>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+<h4 class="em-high">What's going on here?</h4>
+
+We've applied the following text modifiers:
+
+* **Alignment** - we applied the `txt-c` to center the text in our hero unit.
+* **Emphasis** - we applied the `em-high` class to make our `h1` bold.
+* **Size** - we applied the `title` class to make our `h1` title-sized.
+
+<h4 class="em-high">More info</h4>
+
+* More info on typography - [elements page](/elements.html#typography)
+
+
+
+
+<h3 class="styleguide">The Additional Elements</h3>
+
+```html_example
+<div class="pane bg-glow txt-c">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-22 col-md-offset-1">
+        <h1 class="type-neutral-11 em-high title">The Agile Platform for the Agile Team!</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-8">
+        <h2 class="type-neutral-11">Powered by Cloud Foundry</h2>
+        <a class="btn btn-highlight-alt btn-lg btn-block em-alt" href="https://console.run.pivotal.io/register">Sign up for free</a>
+        <p class="h4 type-neutral-11">60 day free trial. No credit card required</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+<h4 class="em-high">What's going on here?</h4>
+
+We added a new row with some additional elements.
+As before we have specified a column layout spanning the middle 8 of the 24 columns on desktop displays.
+Because it's within the pane, its contents are centered by the `txt-c` class.
+
+The link is styled as a button with the `btn` class.
+We have applied a higlight to the button with `btn-highlight-alt`, and increased it's size with `btn-lg`.
+`btn-block` set's the button's width to fill it's containing element.
+The `em-alt` is another text emphasis class.
+
+The `p` element at the bottom has the class `h4`. This gives the `p` the font size of an `h4`.
+
+<div class="alert alert-info mbxl">
+  <h5 class="em-high mtn">
+    Pivotal UI is designed to separate visual and code semantics.
+  </h5>
+
+  <p>
+    All elements should use the proper hierarchical tag.
+    (e.g. <code>h2</code>s should follow <code>h1</code>s, content should be contained in <code>p</code>s, etc.)
+    Use modifier classes if you need an element to appear in a different style.
+    (e.g. making an <code>h3</code> have and <code>h2</code>s size).
+  </p>
+</div>
+
+<h4 class="em-high">More info</h4>
+
+* More info on buttons - [elements page](/elements.html#button)
+
+*/
+
+/*
+
+SAVE FOR LATER! ASIDE!
+Separating code and visual semantics
+Sometimes you may need to use a heading which has different visual and code semantics. You can accomplish this by combining classes with elements (classes take visual precedence over elements in this case).
+
+*/
