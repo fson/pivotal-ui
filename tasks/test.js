@@ -8,6 +8,7 @@ var open = require('gulp-open');
 gulp.task('test', [
   'lint',
   '_cssCritic',
+  'karma'
 ]);
 
 gulp.task('karma', function (done) {
