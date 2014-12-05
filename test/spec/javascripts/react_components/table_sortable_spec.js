@@ -4,7 +4,7 @@ var $ = require('jquery');
 var React = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 
-var TableSortable = React.createFactory(require('../../../src/pivotal-ui/javascripts/table-sortable.jsx'));
+var TableSortable = React.createFactory(require('../../../../src/pivotal-ui/javascripts/react_components/table-sortable.jsx'));
 
 describe('TableSortable', function() {
   beforeEach(function() {
