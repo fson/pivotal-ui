@@ -366,6 +366,27 @@ New elements fade in
 <a data-add-item-to="#list-group-adding-demo">Add an item</a>
 ```
 
+*/
+
+/*doc
+---
+title: React Super Experimental Foo
+name: foo_react
+categories:
+  - beta
+---
+
+
+```html_example
+<div id='react-foo'></div>
+```
+
+```js_example
+React.render(
+  CustomUpdatingListGroup(),
+  document.getElementById('react-foo')
+)
+```
 
 */
 
