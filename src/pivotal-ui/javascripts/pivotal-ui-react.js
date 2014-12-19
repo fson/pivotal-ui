@@ -56,6 +56,7 @@ global.Col = require('./grids.jsx').Col;
 global.Media = require('./media.jsx').Media;
 
 global.PivnetHomepage = require('./pivnet_homepage.jsx').PivnetHomepage;
+global.PivnetNav = require('./pivnet_nav.jsx').PivnetNav;
 
 global.Panel = require('./panels.jsx').Panel;
 global.SimplePanel = require('./panels.jsx').SimplePanel;

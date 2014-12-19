@@ -1,0 +1,39 @@
+/*doc
+---
+title: Pivnet Nav
+name: pivnetacos_nav
+categories:
+  - Beta
+---
+
+
+```html_example
+<div id="pivnetacos-nav"></div>
+```
+
+```jsx_example
+var links = [
+  {
+    name: 'Products',
+    href: '#'
+  },
+  {
+    name: 'Groups',
+    href: '#'
+  },
+  {
+    name: 'Reports',
+    href: '#'
+  },
+  {
+    name: 'Support',
+    href: '#'
+  }
+];
+
+React.render(
+  <PivnetNav navLinks={links}/>,
+  document.getElementById('pivnetacos-nav')
+);
+```
+*/
