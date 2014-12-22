@@ -409,3 +409,25 @@ React.render(
 ```
 
 */
+
+/*doc
+---
+title: Media New!
+name: media_new
+categories:
+  - Beta
+---
+
+Media New OMG!!!
+
+```html_example
+<div id="pivotal-taquitos"></div>
+```
+
+```jsx_example
+React.render(
+  <MediaNewExample></MediaNewExample>,
+  document.getElementById('pivotal-taquitos')
+);
+```
+*/
