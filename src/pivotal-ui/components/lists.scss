@@ -977,3 +977,35 @@ or you want to vertically align it.
 Use [Card lists][list_cards] if you'd like to make a grid of vertically and horizontally aligned cards.
 
 */
+
+
+/*doc
+---
+title: React Draggable List
+name: react_draggable_list
+categories:
+  - Beta
+---
+
+```html_example
+<div id="draggable-list-example"></div>
+```
+
+```jsx_example
+
+React.render(
+  <UI.DraggableList>
+    <UI.DraggableListItem>
+      Get me out of here!
+    </UI.DraggableListItem>
+
+    <UI.DraggableListItem>
+      LOL
+    </UI.DraggableListItem>
+  </UI.DraggableList>,
+  document.getElementById('draggable-list-example')
+);
+```
+
+
+*/
