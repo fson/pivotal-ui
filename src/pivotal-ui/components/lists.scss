@@ -1006,6 +1006,21 @@ React.render(
   document.getElementById('draggable-list-example')
 );
 ```
-
-
 */
+
+.list-draggable {
+  .draggable-grip {
+    display: inline-block;
+    visibility: hidden;
+    color: $gray-6;
+  }
+
+  li:hover {
+    cursor: pointer;
+
+    .draggable-grip {
+      visibility: visible;
+    }
+  }
+}
+

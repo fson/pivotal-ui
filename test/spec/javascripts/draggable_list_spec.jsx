@@ -30,8 +30,14 @@ describe('DraggableList', function() {
   });
 
   it("renders a list group of all items", function() {
+    expect($('#container ul.list-group')).toHaveClass('list-draggable');
+
     expect($('#container ul.list-group li').length).toEqual(2);
+
     expect($('#container li.list-group-item').eq(0)).toHaveText("Get me out of here!");
+    expect($('#container li.list-group-item').eq(0)).toContainElement($('.draggable-grip'));
+
     expect($('#container li.list-group-item').eq(1)).toHaveText("LOL");
+    expect($('#container li.list-group-item').eq(1)).toContainElement($('.draggable-grip'));
   });
 });
