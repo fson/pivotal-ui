@@ -1002,6 +1002,10 @@ React.render(
     <UI.DraggableListItem>
       LOL
     </UI.DraggableListItem>
+
+    <UI.DraggableListItem>
+      Can't stop
+    </UI.DraggableListItem>
   </UI.DraggableList>,
   document.getElementById('draggable-list-example')
 );
@@ -1009,17 +1013,23 @@ React.render(
 */
 
 .list-draggable {
+  @include user-select(none);
+
   .draggable-grip {
     display: inline-block;
     visibility: hidden;
     color: $gray-6;
   }
 
-  li:hover {
-    cursor: pointer;
+  li {
+    width: 100%;
 
-    .draggable-grip {
-      visibility: visible;
+    &:hover {
+      cursor: pointer;
+
+      .draggable-grip {
+        visibility: visible;
+      }
     }
   }
 }

@@ -1,7 +1,8 @@
 'use strict';
 
 var $ = require('jquery');
-var React = require('react');
+var React = require('react/addons');
+var TestUtils = React.addons.TestUtils;
 
 var DraggableList = require('../../../src/pivotal-ui/javascripts/draggable-list.jsx').DraggableList;
 var DraggableListItem = require('../../../src/pivotal-ui/javascripts/draggable-list.jsx').DraggableListItem;
@@ -39,5 +40,10 @@ describe('DraggableList', function() {
 
     expect($('#container li.list-group-item').eq(1)).toHaveText("LOL");
     expect($('#container li.list-group-item').eq(1)).toContainElement($('.draggable-grip'));
+  });
+
+  describe("when mouse is pressed on a list element", function() {
+    it("TODO", function() {
+    });
   });
 });
