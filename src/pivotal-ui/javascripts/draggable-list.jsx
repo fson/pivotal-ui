@@ -6,7 +6,7 @@ var _ = require('lodash');
 var DraggableList = React.createClass({
   getInitialState: function () {
     return {
-      placeholderIndex: null
+      destinationIndex: null
     }
   },
   render: function () {
@@ -21,12 +21,12 @@ var DraggableList = React.createClass({
         index: index,
         parentBeginDragging: this.beginDragging,
         parentEndDragging: this.endDragging,
-        parentUpdatePlaceholder: this.updatePlaceholder
+        parentReorderList: this.reorderList
       }));
     }, this);
 
-    if (_.isNumber(this.state.placeholderIndex)) {
-      items.splice(this.state.placeholderIndex, 0, listItemPlaceholder);
+    if (_.isNumber(this.state.destinationIndex)) {
+      items.splice(this.state.destinationIndex, 0, listItemPlaceholder);
     }
 
     return (
@@ -37,26 +37,28 @@ var DraggableList = React.createClass({
   },
   beginDragging: function (index) {
     this.setState({
-      placeholderIndex: index
+      destinationIndex: index
     });
   },
   endDragging: function () {
     this.setState({
-      placeholderIndex: null
+      destinationIndex: null
     });
   },
-  updatePlaceholder: function (yPos) {
-    var children = this.refs.draggableList.getDOMNode().children;
-    var newIndex = children.length;
+  reorderList: function (yPos) {
+    // var children = this.refs.draggableList.getDOMNode().children;
+    // var newIndex = children.length;
 
-    _.each(children, function (child, index) {
-      if (yPos < child.offsetTop) {
-        newIndex = index;
-        return false;
-      }
-    }, this);
+    // _.each(children, function (child, index) {
+      // if (yPos < child.offsetTop) {
+        // newIndex = index;
+        // return false;
+      // }
+    // }, this);
+
     this.setState({
-      placeholderIndex: newIndex
+      destinationIndex: newIndex,
+
     });
   }
 });
@@ -94,7 +96,7 @@ var DraggableListItem = React.createClass({
       listItem.style.left = left + 'px';
       listItem.style.top = top + 'px';
 
-      this.props.parentUpdatePlaceholder(top);
+      this.props.parentReorderList(top);
     }
   },
   endDragging: function () {
