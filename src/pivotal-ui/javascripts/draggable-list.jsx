@@ -3,11 +3,38 @@
 var React = require('react/addons');
 var _ = require('lodash');
 
+var arraySwapPositions = function arraySwapPositions(arr, x, y) {
+  arr[x] = arr.splice(y, 1, arr[x])[0];
+}
+
 var DraggableList = React.createClass({
   getInitialState: function () {
     return {
-      destinationIndex: null
+      targetIndex: null
     }
+  },
+  componentWillMount: function () {
+    var copyOfChildren = React.Children.map(this.props.children, function(child) {
+      return React.addons.cloneWithProps(child);
+    });
+    console.log("original children", this.props.children);
+    console.log("copied children", copyOfChildren);
+
+    this.setState({
+      listItems: copyOfChildren
+    });
+
+    var self = this;
+    window.addEventListener('keydown', function () {
+      var copy = React.Children.map(self.state.listItems, function(child) {
+        return React.addons.cloneWithProps(child);
+      });
+
+      arraySwapPositions(copy, 0, 1);
+      this.setState({
+        listItems: copy
+      });
+    });
   },
   render: function () {
     var listItemPlaceholder = React.addons.cloneWithProps(<DraggableListItemPlaceholder />, {
@@ -15,7 +42,7 @@ var DraggableList = React.createClass({
     });
 
     var items = [];
-    React.Children.forEach(this.props.children, function(item, index){
+    React.Children.forEach(this.state.listItems, function(item, index){
       items.push(React.addons.cloneWithProps(item, {
         key: 'list-item-' + index,
         index: index,
@@ -25,8 +52,8 @@ var DraggableList = React.createClass({
       }));
     }, this);
 
-    if (_.isNumber(this.state.destinationIndex)) {
-      items.splice(this.state.destinationIndex, 0, listItemPlaceholder);
+    if (_.isNumber(this.state.targetIndex)) {
+      items.splice(this.state.targetIndex, 0, listItemPlaceholder);
     }
 
     return (
@@ -37,29 +64,15 @@ var DraggableList = React.createClass({
   },
   beginDragging: function (index) {
     this.setState({
-      destinationIndex: index
+      targetIndex: index
     });
   },
   endDragging: function () {
     this.setState({
-      destinationIndex: null
+      targetIndex: null
     });
   },
   reorderList: function (yPos) {
-    // var children = this.refs.draggableList.getDOMNode().children;
-    // var newIndex = children.length;
-
-    // _.each(children, function (child, index) {
-      // if (yPos < child.offsetTop) {
-        // newIndex = index;
-        // return false;
-      // }
-    // }, this);
-
-    this.setState({
-      destinationIndex: newIndex,
-
-    });
   }
 });
 
