@@ -96,5 +96,8 @@ module.exports = {
   SuccessAlert: require('./alerts.jsx').SuccessAlert,
   InfoAlert: require('./alerts.jsx').InfoAlert,
   WarningAlert: require('./alerts.jsx').WarningAlert,
-  ErrorAlert: require('./alerts.jsx').ErrorAlert
+  ErrorAlert: require('./alerts.jsx').ErrorAlert,
+
+  FilterableSelect: require('./filterable-select').FilterableSelect,
+  Option: require('./option').Option
 };

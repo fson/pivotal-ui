@@ -1314,3 +1314,24 @@ var FilteringSearchExample = React.createClass({
 ```
 
 */
+
+/*doc
+---
+title: Filterable Select
+name: form_select_filterable_react
+categories:
+  - Beta
+---
+
+```jsx_example
+```
+
+```react_example
+<UI.FilterableSelect placeholder="Select a State">
+  <UI.Option value="CA">California</UI.Option>
+  <UI.Option value="NY" selected>New York</UI.Option>
+  <UI.Option value="WA">Washington</UI.Option>
+</UI.FilterableSelect>
+```
+
+*/
