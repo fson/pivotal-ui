@@ -14,7 +14,7 @@ var UIImage = React.createClass({
     delete this.props.href;
 
     if (href){
-      return(
+      return (
         <a href={href}>
           <img {...this.props} className={classes}>
             {this.props.children}

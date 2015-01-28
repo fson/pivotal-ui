@@ -70,27 +70,27 @@ var createTypographyClass = function createTypographyClass(opts) {
 };
 
 var DefaultH1 = createTypographyClass({
-  element: 'h1',
+  element: 'h1'
 });
 
 var DefaultH2 = createTypographyClass({
-  element: 'h2',
+  element: 'h2'
 });
 
 var DefaultH3 = createTypographyClass({
-  element: 'h3',
+  element: 'h3'
 });
 
 var DefaultH4 = createTypographyClass({
-  element: 'h4',
+  element: 'h4'
 });
 
 var DefaultH5 = createTypographyClass({
-  element: 'h5',
+  element: 'h5'
 });
 
 var DefaultH6 = createTypographyClass({
-  element: 'h6',
+  element: 'h6'
 });
 
 var AlternateH1 = createTypographyClass({
@@ -108,7 +108,7 @@ var AlternateH2 = createTypographyClass({
 
 var AlternateH3 = createTypographyClass({
   element: 'h3',
-  size: 'h4',
+  size: 'h4'
 });
 
 var AlternateH4 = createTypographyClass({
@@ -125,7 +125,7 @@ var AlternateH5 = createTypographyClass({
 });
 
 var AlternateH6 = createTypographyClass({
-  element: 'h6',
+  element: 'h6'
 });
 
 

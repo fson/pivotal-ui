@@ -8,6 +8,7 @@ var argv = require('yargs').argv,
   fs = require('fs'),
   gulp = require('gulp'),
   jshint = require('gulp-jshint'),
+  eslint = require('gulp-eslint'),
   open = require('gulp-open'),
   reactify = require('reactify'),
   rename = require('gulp-rename'),
@@ -41,11 +42,15 @@ gulp.task('serve', function() {
 });
 
 gulp.task('lint', function() {
-  return src('./src/pivotal-ui/javascripts/**/*.js?(x)')
-    .pipe(jsxTransform())
-    .pipe(jshint().on('error', errorHandler.handleError))
-    .pipe(jshint.reporter(stylish))
-    .pipe(jshint.reporter('fail'));
+  return src(['src/pivotal-ui/javascripts/**/*.js*'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
+  // return src('./src/pivotal-ui/javascripts/**/*.js?(x)')
+    // .pipe(jsxTransform())
+    // .pipe(jshint().on('error', errorHandler.handleError))
+    // .pipe(jshint.reporter(stylish))
+    // .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('assets', [

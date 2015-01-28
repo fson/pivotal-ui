@@ -2,7 +2,7 @@
 var React = require('react/addons');
 var _ = require('lodash');
 var cx = React.addons.classSet;
-var {move} = require('./utils');
+var { move } = require('./utils');
 var HoverMixin = require('./mixins/hover-mixin');
 
 function preventDefault(e) {

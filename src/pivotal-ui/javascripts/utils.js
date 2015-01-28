@@ -10,6 +10,10 @@ var breakpoints = {
   xlMin: 1800
 };
 
+function isMinWidth(width) {
+  return Modernizr.mq('(min-width: ' + width + 'px)');
+}
+
 var utils = {
   isMinWidthXs: function minWidthXs() {
     return isMinWidth(breakpoints.xsMin);
@@ -50,7 +54,3 @@ var utils = {
 };
 
 module.exports = global.utils = utils;
-
-function isMinWidth(width) {
-  return Modernizr.mq('(min-width: ' + width + 'px)');
-}

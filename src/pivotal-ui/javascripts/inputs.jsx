@@ -12,7 +12,7 @@ var SearchInput = React.createClass({
 
     inputClasses = inputClasses.join(" ");
 
-    return(
+    return (
       <div className='form-group form-group-search'>
         <input {...this.props} type='text' className={inputClasses} placeholder={this.props.placeholder}/>
         <i className='fa fa-search' />
