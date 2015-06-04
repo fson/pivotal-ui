@@ -22,4 +22,3 @@ deploy:
   space: pivotal-ui
   on:
     repo: pivotal-cf/pivotal-ui
-    branch: master
