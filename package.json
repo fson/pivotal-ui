@@ -160,7 +160,7 @@
     "pui-react-typography": "^0.1.0"
   },
   "scripts": {
-    "test": "node_modules/gulp/bin/gulp.js ci --fatal || cat /tmp/*.dmp"
+    "test": "node_modules/gulp/bin/gulp.js ci --fatal || (echo 'Dump file contents...' && cat /tmp/*.dmp && echo '================')"
   },
   "repository": {
     "type": "git",
