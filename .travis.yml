@@ -14,13 +14,20 @@ notifications:
 before_deploy:
 - gulp release-zip
 deploy:
-  provider: cloudfoundry
-  api: https://api.run.pivotal.io
-  username: pivotal-ui@pivotal.io
-  password:
-    secure: gHmcewGbR/rNN8mYej9Sr33fwkcv2eEQ/Bf3rbgsjuRcZH2o9+9j/85BxwGT41NwPfB0wX1I9RC8Gz6SHwFio1IRCR/Y1z/Jzfs1h40JwFzzN1HkFwAxdd5+61pDHOxDl7tqDoqLo5PB820QUiQ0QhZTsWsNhYoX/+u0pO/o/oACFA29wf3QTMyOYGt+ImpMRqQcNwsBHZYPHqc2twmjNLNyH3Zps+RXtnZUWY6FrfcuIbYezsfwdC2Q8pN5hRdIJ1XGLcmZYLYUYgDIAxLcY5/E6Ht6jirCgXjoy3V0Zd3iCuXZnmf9mpAvaDycKK4ZRi63gdbmzzZiPOC2/sbE2Rwk9T6v6Wci9iVJketncYd4r6ofKn0Zvm8ZzP74NuU8pOEpDXGzK+7lEtTYglO3np2gn4HRSzDI/ANirtPzW/EgD3QRkmMu7XcnvUYEusSRjYCGe3P270a2D2t/fDlYV/96Dft/7F9HNhQJVqzlUWqitO7La+kNRrGI9dCSoKUxESbtobTzrb5HG93C0YCegMnsyfJ8yRMq/8Ya9FEQEoqkZRGS6zQPwmOimQl+AuinKC3WxNPUxpfn2A1tjYOouJK+HUumNzsRLvCxQo3bMhyKD5Rx44SVQfungsWA35Zd2hEZ75YJAJ2nJqOnFSf3b71S4OR965je31m+vDMGzXo=
-  organization: pivotal
-  space: pivotal-ui-staging
-  on:
-    repo: pivotal-cf/pivotal-ui
-    branch: foobar
+  matrix:
+  - provider: cloudfoundry
+    api: https://api.run.pivotal.io
+    username: pivotal-ui@pivotal.io
+    password:
+      secure: gHmcewGbR/rNN8mYej9Sr33fwkcv2eEQ/Bf3rbgsjuRcZH2o9+9j/85BxwGT41NwPfB0wX1I9RC8Gz6SHwFio1IRCR/Y1z/Jzfs1h40JwFzzN1HkFwAxdd5+61pDHOxDl7tqDoqLo5PB820QUiQ0QhZTsWsNhYoX/+u0pO/o/oACFA29wf3QTMyOYGt+ImpMRqQcNwsBHZYPHqc2twmjNLNyH3Zps+RXtnZUWY6FrfcuIbYezsfwdC2Q8pN5hRdIJ1XGLcmZYLYUYgDIAxLcY5/E6Ht6jirCgXjoy3V0Zd3iCuXZnmf9mpAvaDycKK4ZRi63gdbmzzZiPOC2/sbE2Rwk9T6v6Wci9iVJketncYd4r6ofKn0Zvm8ZzP74NuU8pOEpDXGzK+7lEtTYglO3np2gn4HRSzDI/ANirtPzW/EgD3QRkmMu7XcnvUYEusSRjYCGe3P270a2D2t/fDlYV/96Dft/7F9HNhQJVqzlUWqitO7La+kNRrGI9dCSoKUxESbtobTzrb5HG93C0YCegMnsyfJ8yRMq/8Ya9FEQEoqkZRGS6zQPwmOimQl+AuinKC3WxNPUxpfn2A1tjYOouJK+HUumNzsRLvCxQo3bMhyKD5Rx44SVQfungsWA35Zd2hEZ75YJAJ2nJqOnFSf3b71S4OR965je31m+vDMGzXo=
+    organization: pivotal
+    space: pivotal-ui-staging
+    on:
+      repo: pivotal-cf/pivotal-ui
+      branch: foobar
+  - provider: releases
+    api_key: tQQi2uunRyJGdFjgewTtvbUpbcWFcclG1H0Q2ptaFVV0KddFSC0vBjPzqRb7i+uNvUBImi+lBKFmPIAXVhplv2M4+jmcwlu9V3KCIJf1VNB7maY+ORCTAx8BaRcZH3+hJrca8ElpGS7RPPMVb1TUx+kkOl3+xt2oYiQFFcWUKUvZGPta+loIxxOWQS4b2RnKvZTqKdY1oAkoeGSl5Xpes4xnnP9yve3xYN8ueWMbA/UaixmJxI/gNR7fx5V5tvqd5H8lfcYimRD+gCzk2s9GEzhHjFJhzdzHQ3KMoZNJjMJjDm8ALxnHlC/RtKGZYBWhPH5AeuuzeNdl1m+AL6D93wDA1LwOXJW9/Upvv2+OxmbfQdlkGCaps1qQuffvfCqxJ4fEZTSJj7egbkcc/yZ3vK0SN+dYhVpZ7xlW+l2+yh+q/rWyFKOaZq4xO7j0aZdb8aiZ4RZEt4Q9GIG/+qMCHC/LlvJBOi6GFJxfWexAbHrvrc/wT8HQVr66Vc570MfHPh1ILE6IgaaYCJYnsqWBsAF/fCC+IVzvGM8rM7+B7J53zT0r3xyAC47Jl12NxN7YbqDZBiJ/tnfJZ7diX1Igq01sfgtiIKIkVQt44eJoRC0VSxo7g+rJgkwriQvf9Qe0INvADzBktiyBkYJCPwzn2FOgJWEe7lmplBLzfsihRB4=
+    file: pui.zip
+    skip_cleanup: true
+    on:
+      branch: foobar
