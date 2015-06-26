@@ -2,7 +2,7 @@
   "name": "pivotal-ui",
   "private": true,
   "description": "***",
-  "version": "1.9.0",
+  "version": "0.1.2",
   "main": "gulpfile.js",
   "devDependencies": {
     "axios": "^0.5.4",
