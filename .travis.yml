@@ -14,7 +14,6 @@ notifications:
 before_deploy:
 - gulp release-zip
 deploy:
-  matrix:
   - provider: cloudfoundry
     api: https://api.run.pivotal.io
     username: pivotal-ui@pivotal.io
