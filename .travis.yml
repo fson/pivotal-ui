@@ -2,15 +2,17 @@ language: node_js
 node_js:
 - '0.10'
 sudo: true
-before_install:
-- bundle install
-- npm install -g gulp
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+#before_install:
+#- bundle install
+#- npm install -g gulp
+#- export DISPLAY=:99.0
+#- sh -e /etc/init.d/xvfb start
 notifications:
   email: false
   slack:
     secure: ft6b+1ugcnFrl6qKNVyQboFBapRI+ci34kGu01O5mMF3WVOlDwJewSKQ2l3TkWrFlt6Ty2nSg8ynMT+iXbudZNPPqoBdKHHFTThu4BoqFoI1DJOSqOO/B7vgAZCgThUX+lqS+rv8pq/XkAi+0LmsBM/U2LLLPR3xaWw0vctP+ykKAU532bAAUZQ086gspMi3ylvqKbXsXqNOWCeKqUADplxuJx4hORV75RN509f6jUDLitaS//2/z117uxoehN52X+orO0TyCIE5OSXL/Zm7HKE4HJp0we+1n7BC3VyXWNlX8yw+e5QA8z9C0hvtqLCpkuEIT61pOM5hYAS5Z8FcOHc9hmqphsZiwL/Nosu25+9e2/XkvNSo9UvZ0VXcePlZQpTe9F/UDjou8ofouPIe7JIUUu19WX/XmK/31ux/bF3/DVbABccPQINMwAy+MZR4iKKBGjUhhcZPTSZDufoUn2u6jR310pbqfxVgPDFx92R5+/pou7ULwmNR46xFO0Xv59T3QR8HnoMnxth1DAu22nWM1ezYflLlp154IdxwyQlIwy46PJ7ZchP7yR+UP7S71Kvv1m7RQ05RXireShhkIykn1IchWgk64HaAWP82wJJvBzbAgC7RUuLfbGS2Q4C2XnvqyLmWtW8Lk55mIrayLYXiNJJss+R1TokywbvLgBM=
+script:
+- gulp monolith
 before_deploy:
 - gulp release-zip
 deploy:
@@ -25,8 +27,9 @@ deploy:
       repo: pivotal-cf/pivotal-ui
       branch: foobar
   - provider: releases
-    api_key: tQQi2uunRyJGdFjgewTtvbUpbcWFcclG1H0Q2ptaFVV0KddFSC0vBjPzqRb7i+uNvUBImi+lBKFmPIAXVhplv2M4+jmcwlu9V3KCIJf1VNB7maY+ORCTAx8BaRcZH3+hJrca8ElpGS7RPPMVb1TUx+kkOl3+xt2oYiQFFcWUKUvZGPta+loIxxOWQS4b2RnKvZTqKdY1oAkoeGSl5Xpes4xnnP9yve3xYN8ueWMbA/UaixmJxI/gNR7fx5V5tvqd5H8lfcYimRD+gCzk2s9GEzhHjFJhzdzHQ3KMoZNJjMJjDm8ALxnHlC/RtKGZYBWhPH5AeuuzeNdl1m+AL6D93wDA1LwOXJW9/Upvv2+OxmbfQdlkGCaps1qQuffvfCqxJ4fEZTSJj7egbkcc/yZ3vK0SN+dYhVpZ7xlW+l2+yh+q/rWyFKOaZq4xO7j0aZdb8aiZ4RZEt4Q9GIG/+qMCHC/LlvJBOi6GFJxfWexAbHrvrc/wT8HQVr66Vc570MfHPh1ILE6IgaaYCJYnsqWBsAF/fCC+IVzvGM8rM7+B7J53zT0r3xyAC47Jl12NxN7YbqDZBiJ/tnfJZ7diX1Igq01sfgtiIKIkVQt44eJoRC0VSxo7g+rJgkwriQvf9Qe0INvADzBktiyBkYJCPwzn2FOgJWEe7lmplBLzfsihRB4=
+    api_key:
+      secure: FEY0UlBt+Rix+8LiEgNXBQUk2Jv2zpKjDCnWjPCVzRhgngDmLmxqmi0NoWqLXQ7LNqXdjVKqqYbhndOL5bJxTPyFG5kqPutVYM79iAXUSFQ3To6U57N4Bv7JeD6u97hWEw9c4VfwyysdPjop1a9ppRik6fuiPd6PBPRpPHeoFTe9azJ009KhFi5O4HGHHjWNRuZluZxoDMrHi5NBYdhxtzxEiG9aIvGgwrO6us+sdhd2CwqTV+mRxi2hmnxkK3myPSuQZWzk0M2CgXE90WwqzgcW9dp4nOKYiFYLcdwE6e9VKJMntNMv9Fy/4yyb7Q48IVoVNu5xD/jsAjydFTnowQhk7qtNjFMlMhJaVnnoflCZ9uF0Q0mXpy80G5QfqP07JRvKz49DSqiG2x1ZM+6hCnNnRg74bis1aKw0TBh2ClV5K6CYHX+b2iXVz2Hkdutlxm0mWRr7mA7GQIQXUaTW3EHXnUSOYFVBvDZSZ0zGnPX2dkQYev2j3nqAsCPl6MvmkesUusIR15GbxMtfJksa3Zrtz/68lML4bvshqHvzeUpser70FifWkA5R4Rpo/PO8b0ddRR7/K7mNovOI60mgwBKKFgEBzBIKBl/1LLrUNOFZdefglgQOHRNi5SGyOzwV2zCs4Yfw6XHRUmgyMKzVdC0VL9c+WOtc5cy7DTRGauk=
     file: pui.zip
-    skip_cleanup: true
     on:
+      repo: pivotal-cf/pivotal-ui
       branch: foobar
