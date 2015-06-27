@@ -61,6 +61,7 @@ gulp.task('release-push-production-styleguide', (done) => {
 
 gulp.task('release-push', (done) => runSequence(
   ['release-push-git-verify', 'release-push-production-styleguide-verify'],
+  'ci',
   'release-push-npm-publish',
   ['release-push-git', 'release-push-production-styleguide'],
   done
