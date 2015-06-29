@@ -1,5 +1,4 @@
 import memoize from 'lodash.memoize';
-import changelog from 'conventional-changelog';
 import q from 'q';
 import semver from 'semver';
 import {map, pipeline} from 'event-stream';
@@ -43,29 +42,6 @@ export const getNewVersion = memoize(function() {
       newVersion = semver.inc(oldVersion, releaseType);
       deferred.resolve(newVersion);
     }
-  });
-
-  return deferred.promise;
-});
-
-export const getVersionChanges = memoize(function() {
-  var deferred = q.defer();
-
-  getNewVersion()
-  .then(function(newVersion) {
-    changelog({
-      version: newVersion,
-      file: 'tmp/foo'
-    }, function(err, versionChanges) {
-      if (err) {
-        deferred.reject(err);
-      } else {
-        deferred.resolve(versionChanges);
-      }
-    });
-  })
-  .fail(function(err) {
-    deferred.reject(err);
   });
 
   return deferred.promise;

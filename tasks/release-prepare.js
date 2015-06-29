@@ -1,17 +1,20 @@
 import {exec} from 'child_process';
 import gulp from 'gulp';
-import {merge} from 'event-stream';
+import {merge, map} from 'event-stream';
+import series from 'stream-series';
 import path from 'path';
 import promisify from 'es6-promisify';
 import {argv} from 'yargs';
 import runSequence from 'run-sequence';
 import {Stream} from 'stream';
 import glob from 'glob';
-import through from 'through2';
-import File from 'vinyl';
+import changelog from 'conventional-changelog';
+import {log} from 'gulp-util';
+import source from 'vinyl-source-stream';
 
-import {getVersionChanges, getNewVersion, releaseDest} from './helpers/release-helper';
+import {getNewVersion, releaseDest} from './helpers/release-helper';
 import {componentsToUpdate, updatePackageJsons} from './helpers/package-version-helper';
+import {commitTransform} from './helpers/changelog-helper';
 
 const plugins = require('gulp-load-plugins')();
 const execPromise = promisify(exec);
@@ -61,25 +64,25 @@ gulp.task('release-update-package-versions', () => {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('release-generate-changelog', function() {
-  return gulp.src(['CHANGELOG.md'])
-    .pipe(through.obj(async function(changelog, _, callback) {
-      try {
-        const versionChanges = await getVersionChanges();
+gulp.task('release-generate-changelog', () => {
+  const newChangesStream = changelog(
+    {preset: 'angular', warn: log, append: true},
+    {version: '9.9.9'},
+    {},
+    {noteKeywords: ['BREAKING CHANGE', 'DEPRECATION WARNING']},
+    {transform: commitTransform}
+  );
 
-        const oldChangelog = changelog.contents.toString();
-        changelog.contents = new Buffer(versionChanges + oldChangelog);
-        this.push(changelog);
+  const oldChangesStream = gulp.src('CHANGELOG.md')
+    .pipe(map((file, cb) => cb(null, file.contents)));
 
-        const latestChangesFile = new File({path: 'LATEST_CHANGES.md', contents: new Buffer(versionChanges)});
-        this.push(latestChangesFile);
-        callback();
-      }
-      catch(error) {
-        console.error(error);
-        callback(error);
-      }
-    }))
+  const latestChangesFileStream = newChangesStream
+    .pipe(source('LATEST_CHANGES.md'));
+
+  const changelogFileStream = series(newChangesStream, oldChangesStream)
+    .pipe(source('CHANGELOG.md'));
+
+  return merge(changelogFileStream, latestChangesFileStream)
     .pipe(gulp.dest('.'));
 });
 
