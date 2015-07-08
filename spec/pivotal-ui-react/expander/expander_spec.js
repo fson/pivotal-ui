@@ -57,8 +57,10 @@ describe('ExpanderContent', function() {
 
       it('stops rendering the content', function() {
         this.expanderContent.toggle();
+        expect(this.state.height()).toEqual(0);
         expect(root).not.toContainText('You won a brand new car!');
       });
+
     });
 
     describe('when the content is not visible', function() {
@@ -68,6 +70,7 @@ describe('ExpanderContent', function() {
 
       it('renders the content', function() {
         this.expanderContent.toggle();
+        expect(this.state.height()).not.toEqual(0);
         expect(root).toContainText('You won a brand new car!');
       });
     });

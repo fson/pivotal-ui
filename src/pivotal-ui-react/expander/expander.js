@@ -57,15 +57,21 @@ var ExpanderTrigger = React.createClass({
  */
 var ExpanderContent = React.createClass({
   propTypes: {
-    expanded: types.bool
+    expanded: types.bool,
   },
 
   getInitialState() {
-    return {expanded: this.props.expanded};
+    return {
+      expanded: this.props.expanded,
+      height: 0
+    };
   },
 
   toggle() {
-    this.setState({expanded: !this.state.expanded});
+    this.setState({
+      expanded: !this.state.expanded,
+      height: this.calcHeight()
+    });
   },
 
   render() {
@@ -73,6 +79,10 @@ var ExpanderContent = React.createClass({
       <div key="expandedContent" style={{overflow: 'hidden'}}>{this.props.children}</div> :
       null;
     return <CSSTransitionGroup transitionName="expander">{content}</CSSTransitionGroup>;
+  },
+
+  calcHeight() {
+    debugger;
   }
 });
 
