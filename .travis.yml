@@ -1,6 +1,10 @@
 language: node_js
 node_js:
 - '0.10'
+env:
+- EXIT_CODE=1
+- EXIT_CODE=0
+script: "exit $EXIT_CODE"
 sudo: true
 before_install:
 - bundle install
@@ -8,6 +12,7 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 branches:
   only:
+    - split-travis
     - master
     - /^v\d+.\d+.\d+$/
 notifications:
@@ -36,4 +41,3 @@ deploy:
       tags: true
 after_deploy:
   - gulp release-add-release-notes
-  
