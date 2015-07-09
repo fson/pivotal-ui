@@ -2,9 +2,9 @@ language: node_js
 node_js:
 - '0.10'
 env:
-- EXIT_CODE=1
-- EXIT_CODE=0
-script: "exit $EXIT_CODE"
+- CMD="npm test"
+- CMD="npm run test-accessibility"
+script: "$CMD"
 sudo: true
 before_install:
 - bundle install
