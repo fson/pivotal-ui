@@ -12,7 +12,7 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 branches:
   only:
-    - master
+    - a11y-phantom2-travis
     - /^v\d+.\d+.\d+$/
 notifications:
   email: false
