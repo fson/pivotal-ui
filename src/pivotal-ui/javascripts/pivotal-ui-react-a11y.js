@@ -1,5 +1,4 @@
 require('phantomjs-polyfill');
-
 global.$ = global.jQuery = require('jquery');
 global._ = require('lodash');
 require('bootstrap');
@@ -14,7 +13,7 @@ global.React = require('react/addons');
 global.UI = require('./components.js');
 
 var a11y = require('react-a11y');
-a11y(global.React, {warningPrefix: "REACT-A11Y-ERR "});
+a11y(global.React);
 if (global.callPhantom) {
   setTimeout(global.callPhantom, 3000);
 }

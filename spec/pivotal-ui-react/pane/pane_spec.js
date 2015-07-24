@@ -43,4 +43,8 @@ describe('BasePane', function() {
       expect('.pane').toHaveAttr('data-foo', 'baz');
     });
   });
+
+  it('fails', () => expect(true).toBeFalsy());
+  it('also fails', () => expect(true).toBeFalsy());
+  it('fails yet again', () => expect(true).toBeFalsy());
 });
