@@ -31,7 +31,6 @@ gulp.task('react-build-license', () =>
 gulp.task('react-build-package-json', () =>
   gulp.src('src/pivotal-ui-react/*/package.json')
     .pipe(packageJson())
-    .on('error', (error) => console.error('Failed with error', error))
     .pipe(gulp.dest(buildFolder))
 );
 

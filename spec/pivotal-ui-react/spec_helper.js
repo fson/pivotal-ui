@@ -1,5 +1,4 @@
 require('jasmine_dom_matchers');
-require('phantomjs-polyfill');
 
 global.React = require('react/addons');
 var jQuery = require('jquery');
