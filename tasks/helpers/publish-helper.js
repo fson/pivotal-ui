@@ -47,14 +47,17 @@ export function publishPackages() {
     try {
       await npmLoad({});
 
+      console.log('hello')
       const npmPublish = promisify(npm.commands.publish);
       const npmOwner = promisify(npm.commands.owner);
+      console.log('hi')
 
       for (const packageInfo of packageInfos) {
+        console.log('sup')
         log('Publishing', packageInfo.name);
         await npmPublish([packageInfo.dir]);
 
-        const owners = ['gpleiss', 'mattroyal', 'stubbornella'];
+        const owners = ['gpleiss', 'mattroyal', 'stubbornella', 'ctaymor', 'atomanyih', 'kennyw1019'];
         for (const owner of owners) {
           await npmOwner(['add', owner, packageInfo.name]);
         }
