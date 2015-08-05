@@ -14,6 +14,11 @@ export default function(packageTemplate) {
         }));
       }
       catch(e) {
+        if (e instanceof SyntaxError) {
+          console.error('SyntaxError in one of your package.json files. Godspeed.');
+        } else {
+          console.error(e);
+        }
         callback(e);
       }
     });
